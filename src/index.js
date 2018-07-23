@@ -7,13 +7,20 @@ import counter from './reducers'
 import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
 import Container from './container/TodoItemContainer'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 const store = createStore(counter)
 const rootEl = document.getElementById('root')
 
 ReactDOM.render(
     <Provider store={store} >
-        <Container />
+        {/* <Container /> */}
+        <Router>
+            <div>
+                <Route exact path="/" component={Container}></Route>
+                <Route exact path="/:status" component={Container}></Route>
+            </div>
+        </Router>
     </Provider>,
     rootEl
 )

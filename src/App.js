@@ -77,11 +77,12 @@ class App extends Component {
             })()}
           </ol>
         </div>
+        
         <div>
           <ul className="filters">
             <li>
               <a
-                href="#all"
+                href="/all"
                 onClick={e => this.showFilterList(e)}
                 data-filter="all"
                 className={classNames({
@@ -93,7 +94,7 @@ class App extends Component {
             </li>
             <li>
               <a
-                href="#active"
+                href="/active"
                 onClick={e => this.showFilterList(e)}
                 data-filter="active"
                 className={classNames({
@@ -105,7 +106,7 @@ class App extends Component {
             </li>
             <li>
               <a
-                href="#completed"
+                href="/completed"
                 onClick={e => this.showFilterList(e)}
                 data-filter="completed"
                 className={classNames({
