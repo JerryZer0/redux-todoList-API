@@ -12,9 +12,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
 
+
+
     return {
-        onAdd: (todo) => {
-            todosAPI.add(todo, todos => dispatch(add(todos)))
+        onAdd: (todo, statusOfList) => {
+            todosAPI.add(todo, statusOfList, todos => dispatch(add(todos)))
         },
 
         onShowFilterList: statusOfList => {
@@ -23,12 +25,12 @@ const mapDispatchToProps = dispatch => {
         },
 
         onUpdateItemContent: (viewId, content, statusOfList) => {
-            todosAPI.updateItemContent(viewId, content,
+            todosAPI.updateItemContent(viewId, content, statusOfList,
                 todos => dispatch(updateItemContent(todos)))
         },
 
         onToggleActive: (item, statusOfList) => {
-            todosAPI.toggleActive(item,
+            todosAPI.toggleActive(item, statusOfList,
                 todos => dispatch(toggleActive(todos)))
         }
 
