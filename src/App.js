@@ -31,13 +31,12 @@ class App extends Component {
     const statusOfList = event.target.attributes.getNamedItem('data-filter')
       .value;
     this.props.onShowFilterList(statusOfList)
-
   }
 
-  // updateItemContent(viewId, content) {
-  //   const statusOfList = this.props.statusOfList
-  //   this.props.onUpdateItemContent(viewId, content,statusOfList)
-  // }
+  updateItemContent(viewId, content) {
+    const statusOfList = this.props.statusOfList
+    this.props.onUpdateItemContent(viewId, content,statusOfList)
+  }
 
   render() {
 

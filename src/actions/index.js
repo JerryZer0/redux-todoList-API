@@ -1,6 +1,4 @@
 import * as types from '../constants/ActionTypes'
-import Todo from '../model/Todo';
-import todosAPI from '../API/TodoResourseAPI'
 
 export const add = (todos) => {
     return { type: types.ADD_ITEM, todos }

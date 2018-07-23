@@ -28,9 +28,7 @@ class TodoItem extends Component {
 
   render() {
     const {item} = this.props
-   
-    //console.log("item="+item)
-    //const item = this.props.item;
+
     return (
       <li className={item.status}>
         {
