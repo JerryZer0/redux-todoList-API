@@ -97,10 +97,6 @@ li:hover {
   outline: none;
 }
 
-.completed {
-  color: #999;
-  text-decoration: line-through;
-}
 
 input[type='checkbox'].done-todo {
   margin: 5px 5px 2px 0;

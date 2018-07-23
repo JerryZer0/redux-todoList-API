@@ -1,71 +1,42 @@
 import React, { Component } from 'react';
-//import Counters from './components/CounterGroup'
 import './App.css';
 import Todo from './model/Todo';
 import TodoItem from './components/TodoItem';
 import classNames from 'classnames';
-// import todosAPI from './API/TodoResourseAPI';
-// import Container from './container/ItemContainer'
 
 class App extends Component {
   constructor(props) {
     super(props);
-    //this.todosAPI = todosAPI;
-
-    // this.state = {
-    //   todos: [],
-    //   statusOfList: Todo.ALL
-    // };
   }
 
   componentDidMount() {
-    // this.setState({
-    //   todos: this.deepCopy(this.todosAPI.filerByStatus(Todo.ALL))
-    // });
-    this.props.onComponentDidMount()
+    this.props.onShowFilterList(Todo.ALL)
   }
 
   add(event) {
     if (event.keyCode === 13 || event.button === 0) {
       const todo = new Todo(this.refs.newItem.value)
-      // console.log(statusOfList)
       const statusOfList = this.props.statusOfList
       this.props.onAdd(todo,statusOfList)
       this.refs.newItem.value = '';
     }
-
   }
 
-  toggleActive(viewId) {
-    // this.todosAPI.toggleActive(viewId);
-    // const todos = this.deepCopy(
-    //   this.todosAPI.filerByStatus(this.state.statusOfList)
-    // );
-    // this.setState({ todos });
+  toggleActive(item) {
     const statusOfList = this.props.statusOfList
-    this.props.onToggleActive(viewId,statusOfList)
+    this.props.onToggleActive(item,statusOfList)
   }
 
   showFilterList(event) {
-    //console.log(this.state.todos);
     const statusOfList = event.target.attributes.getNamedItem('data-filter')
       .value;
     this.props.onShowFilterList(statusOfList)
 
   }
 
-  updateItemContent(viewId, content) {
-    const statusOfList = this.props.statusOfList
-    this.props.onUpdateItemContent(viewId, content,statusOfList)
-    // this.todosAPI.updateItemContent(viewId, content);
-    // const todos = this.deepCopy(
-    //   this.todosAPI.filerByStatus(this.state.statusOfList)
-    // );
-    // this.setState({ todos, statusOfList: this.state.statusOfList });
-  }
-
-  // deepCopy(array) {
-  //   return JSON.parse(JSON.stringify(array));
+  // updateItemContent(viewId, content) {
+  //   const statusOfList = this.props.statusOfList
+  //   this.props.onUpdateItemContent(viewId, content,statusOfList)
   // }
 
   render() {
@@ -92,13 +63,13 @@ class App extends Component {
         <div>
           <ol>
             {(() => {
-              const {todoList} = this.props
+              const { todoList } = this.props
               //console.log(todoList)
               return todoList.map(item => (
                 <TodoItem
                   item={item}
-                  key={item.viewId}
-                  toggleActiveHandler={viewId => this.toggleActive(viewId)}
+                  key={item.id}
+                  toggleActiveHandler={item => this.toggleActive(item)}
                   updateItemContent={(viewId, content) =>
                     this.updateItemContent(viewId, content)
                   }
